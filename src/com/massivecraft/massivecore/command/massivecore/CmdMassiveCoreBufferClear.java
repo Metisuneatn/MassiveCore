@@ -1,11 +1,8 @@
 package com.massivecraft.massivecore.command.massivecore;
 
-import com.massivecraft.massivecore.MassiveCorePerm;
-import com.massivecraft.massivecore.command.MassiveCommand;
-import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.engine.EngineMassiveCoreVariable;
 
-public class CmdMassiveCoreBufferClear extends MassiveCommand
+public class CmdMassiveCoreBufferClear extends MassiveCoreCommand
 {
 	// -------------------------------------------- //
 	// CONSTRUCT
@@ -13,11 +10,7 @@ public class CmdMassiveCoreBufferClear extends MassiveCommand
 	
 	public CmdMassiveCoreBufferClear()
 	{
-		// Aliases
-		this.addAliases("clear");
-		
-		// Requirements
-		this.addRequirements(RequirementHasPerm.get(MassiveCorePerm.BUFFER_CLEAR));
+
 	}
 	
 	// -------------------------------------------- //

@@ -1,13 +1,10 @@
 package com.massivecraft.massivecore.command.massivecore;
 
 import com.massivecraft.massivecore.MassiveCoreMConf;
-import com.massivecraft.massivecore.MassiveCorePerm;
-import com.massivecraft.massivecore.command.MassiveCommand;
-import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 
 import java.util.List;
 
-public class CmdMassiveCoreStore extends MassiveCommand
+public class CmdMassiveCoreStore extends MassiveCoreCommand
 {
 	// -------------------------------------------- //
 	// INSTANCE
@@ -30,16 +27,7 @@ public class CmdMassiveCoreStore extends MassiveCommand
 	
 	public CmdMassiveCoreStore()
 	{
-		// Children
-		this.addChild(this.cmdMassiveCoreStoreStats);
-		this.addChild(this.cmdMassiveCoreStoreListcolls);
-		this.addChild(this.cmdMassiveCoreStoreCopydb);
-		
-		// Parameters
-		this.addAliases("store");
-		
-		// Requirements
-		this.addRequirements(RequirementHasPerm.get(MassiveCorePerm.STORE));
+
 	}
 
 }
