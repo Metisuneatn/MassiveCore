@@ -285,7 +285,7 @@ public class Coll<E extends Entity<E>> extends CollAbstract<E>
 		this.preAttach(entity, id);
 		
 		// Add entity reference info
-		entity.setColl(this);
+		entity.setEntityContainer(this);
 		entity.setId(id);
 		
 		// Attach
@@ -391,6 +391,12 @@ public class Coll<E extends Entity<E>> extends CollAbstract<E>
 	}
 	
 	@Override
+	public void changed(String id)
+	{
+		this.putIdentifiedModificationFixed(this.getId(), Modification.UNKNOWN);
+	}
+	
+	@Override
 	public synchronized void removeIdentifiedModificationFixed(String id)
 	{
 		if (id == null) throw new NullPointerException("id");
@@ -443,7 +449,7 @@ public class Coll<E extends Entity<E>> extends CollAbstract<E>
 		entity.clearSyncLogFields();
 		
 		// Remove entity reference info
-		entity.setColl(null);
+		entity.setEntityContainer(null);
 		entity.setId(null);
 		
 		return entity;
@@ -1075,6 +1081,12 @@ public class Coll<E extends Entity<E>> extends CollAbstract<E>
 		return MStore.getDb();
 	}
 	
+	@Override
+	public Coll<E> getColl()
+	{
+		return this;
+	}
+	
 	// -------------------------------------------- //
 	// ACTIVE
 	// -------------------------------------------- //
@@ -1084,6 +1096,8 @@ public class Coll<E extends Entity<E>> extends CollAbstract<E>
 	{
 		return name2instance.containsKey(this.getName());
 	}
+	
+	@Override public boolean isLive() { return this.isActive(); }
 	
 	@Override
 	public void setActive(boolean active)

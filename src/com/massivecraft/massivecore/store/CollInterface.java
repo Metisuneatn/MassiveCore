@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public interface CollInterface<E extends Entity<E>> extends Named, Active, Identified
+public interface CollInterface<E extends Entity<E>> extends Named, Active, Identified, EntityContainer<E>
 {
 	// -------------------------------------------- //
 	// WHAT DO WE HANDLE?
@@ -119,12 +119,12 @@ public interface CollInterface<E extends Entity<E>> extends Named, Active, Ident
 	// ATTACH AND DETACH
 	// -------------------------------------------- //
 	
-	String attach(E entity);
+	/*String attach(E entity);
 	String attach(E entity, Object oid);
 	
 	E detachEntity(E entity);
 	E detachId(Object oid);
-	E detachIdFixed(String id);
+	E detachIdFixed(String id);*/
 	
 	void preAttach(E entity, String id);
 	void postAttach(E entity, String id);
